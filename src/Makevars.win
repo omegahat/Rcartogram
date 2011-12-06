@@ -1,0 +1,3 @@
+#FFT3_DIR=../../fftw3
+PKG_CPPFLAGS=-I$(FFTW3_DIR)
+PKG_LIBS=-L$(FFTW3_DIR) -lfftw3-3

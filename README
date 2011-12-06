@@ -1,0 +1,13 @@
+You'll need to have libfftw3 installed.  On my Linux machines, I needed
+to configure that with --enable-shared.
+
+
+The results we get are slightly different from those of Mark Newman's
+stand-alone cart program. For example, when using uspop.dat data, we
+get 1.002184 and 2.004368 for x = 1 and 2 (using a grid 0, 1, 2, ...)
+whereas Mark's code yields 1.00214 and 2.00428.  This seems to be a
+feature of using a different grid (1:1024 rather than 0:1024 and
+similarly for y).  See tests/check.R.
+
+
+

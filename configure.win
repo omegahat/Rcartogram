@@ -1,0 +1,13 @@
+
+if test -z "${FFTW3_DIR}" ; then
+ echo "You need to set the environment variable FFTW3_DIR to point to the directory containing fftw3.h and libfftw3-3.dll"
+ exit 1
+fi
+
+if ! test -r "$R_PACKAGE_DIR/libs" ;  then
+  mkdir "$R_PACKAGE_DIR/libs"
+fi
+
+cp "$FFTW3_DIR/libfftw3-3.dll" "$R_PACKAGE_DIR/libs"
+
+

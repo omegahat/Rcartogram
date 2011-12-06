@@ -1,0 +1,97 @@
+AC_INIT(src/Rcart.c)
+
+
+AC_ARG_WITH(fftw3, [], FFTW3_DIR="$withval")
+
+
+if test -z "$FFTW3_DIR" ; then
+  AC_PATH_PROGS(PKG_CONFIG, pkg-config)
+fi
+
+
+if test -z "$FFTW3_DIR" ; then
+
+ if test -n "$PKG_CONFIG" ; then 
+  PKG_CPPFLAGS=`$PKG_CONFIG --cflags fftw3`
+  CPPFLAGS=$PKG_CPPFLAGS
+  if test $? = 0 ; then
+     PKG_LIBS=`$PKG_CONFIG --libs fftw3`
+     FOUND_FFTW3="yes"
+  fi
+ fi
+fi
+
+
+if test -z "$PKG_CPPFLAGS" ; then
+
+  if test -z "$FFTW3_DIR" ; then
+    FFTW3_DIR=/usr/local
+  fi
+
+  echo "Looking for fftw3 files in $FFTW3_DIR"
+  
+   # User specified this with --with-fftw3 or setting the environment
+   # variable FFTW3_DIR
+   # So see if the fftw3.h is there.
+  if test -r $FFTW3_DIR/include/fftw3.h ; then
+     PKG_CPPFLAGS="-I$FFTW3_DIR/include/"
+  elif test -r $FFTW3_DIR/api/fftw3.h ; then
+     PKG_CPPFLAGS="-I$FFTW3_DIR/api"
+  else
+     echo "Cannot find fftw.h"
+     exit 10
+  fi
+
+  CPPFLAGS="$PKG_CPPFLAGS"
+  FOUND_FFTW3="yes"
+fi  
+
+
+
+dnl Now check we can compile and link.
+
+AC_TRY_COMPILE([#include <fftw3.h>],
+                 [
+                  fftw_plan plan;
+                 ], [echo "Can compile with fftw3.h"], [AC_MSG_ERROR("cannot find fftw3.h header file") ; exit 1])
+
+AC_CHECK_LIB(fftw3, fftw_malloc, , [AC_MSG_ERROR("cannot link to libfftw3"); exit 2])
+
+
+
+if test -z "$PKG_LIBS" ; then
+  LIBS="-L$FFTW3_DIR/lib -lfftw3"
+  if  ! test -d "$FFTW3_DIR/lib" ; then
+     LIBS="-L$FFTW3_DIR/.libs -lfftw3"
+  fi
+else
+  LIBS="$PKG_LIBS"
+fi
+
+
+ echo "Trying to link against libfftw3"
+
+  AC_TRY_LINK([#include <fftw3.h>],
+              [    fftw_plan plan;
+                   fftw_destroy_plan(plan);
+              ],
+                [PKG_LIBS="$LIBS -lfftw3"; echo "Can link against libfftw3"],
+                [echo "Cannot find/link against libfftw3 in $LIBS"; exit 11;]
+           )
+
+
+DEFINES="-DNOPROGRESS"
+
+PKG_CPPFLAGS="$PKG_CPPFLAGS $DEFINES"
+
+if test -z "$PKG_LIBS" ; then
+  echo "Cannot find how to link against libfftw3. If it is installed, please contact duncan@wald.ucdavis.edu"
+  echo "so that the configuration script for this package can be improved.  If it is not installed, please install it."
+  exit 1;
+fi
+
+AC_SUBST(PKG_CPPFLAGS)
+AC_SUBST(PKG_LIBS)
+
+AC_OUTPUT(src/Makevars)
+

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<link rel="stylesheet" href="../OmegaTech.css">
+<title>Rcartogram</title>
+</head>
+
+<body>
+<h1>Rcartogram</h1>
+<p align=right><a href="@TAR_FILE@">@TAR_FILE@</a></p>
+
+This is an interface to <a
+href="http://www-personal.umich.edu/~mejn">Mark Newmans</a> <a
+href="http://www-personal.umich.edu/~mejn/cart/">cartogram code</a>,
+and the technique of Newman and Gastner.  This is used to produce
+spatial plots where the boundaries of regions can be transformed to be
+proportional to density/counts/populations.  This is illustrated in
+plots such as<center>
+Mark Newman's plot of <b>People living with HIV/AIDS</b>
+<br/>
+<img src="http://www-personal.umich.edu/~mejn/cartograms/hiv1024x512.png"/>
+</center> and <center>
+Michael Gastner's Cartogram of the US House of Representatives
+election, 2008 <br/>
+<img src="http://www.santafe.edu/~mgastner/house_cart.png">
+</center>
+
+<p>
+The technique is described <a href="http://www.pnas.org/cgi/content/abstract/101/20/7499">in a paper</a>.
+</p>
+
+<p> This is currently a basic (and quickly implemented) interface to
+the cartogram code.  It does not do much to make this more
+user-friendly for R users other than allowing one to call the
+functionality in the C code and creating matrices, etc. out of the
+results, providing a prediction method for mapping points on the grid
+onto the resulting cartogram.  There are other things we can do with
+this.  The current version doesn't even produce a plot!
+So plenty for people to add and contribute.
+</p>
+
+
+<h2>Download</h2>
+
+The source for the package is available via
+<a href="@TAR_FILE@">@TAR_FILE@</a>.
+
+<h2>Documentation</h2>
+<dl>
+  <dt>
+  <li> <a href="Changes">Changes</a>
+  <dd>
+</dl>
+
+<h2>Demo</h2>
+
+We create a simple matrix (200 x 200) divided into 5 regions,
+with a rotated circle (or square)  in the middle. Each of these regions has
+a different (population) density.
+We embed this in a bigger "sea" (300 x 300) and use cartogram()
+to "fit" the diffusion transformation.
+Then we superimpose the new regions.
+The result is the following:
+<center>
+<img src="demo.jpg">
+</center>
+
+As we can see, the boundaries of the regions change
+in a non-linear manner.  The top-right region
+which has population density 400 expands into the adjacent
+regions. The circular region has a higher population
+and so its density is diffused over a larger area.
+Note that it moves to accomodate the increased region in the
+top-right corner. The other regions change in size
+to equalize the population density.
+
+<p>
+The code is in the demo/ directory of the package and can be
+run with <code>demo(synthetic, package = "Rcartogram")</code>.
+Alternatively, you can look at the <a href="demo/synthetic.R">code here</a> and change
+the settings, e.g. the size of the grid, whether to use
+a circular region in the middle, the densities of the different
+regions.
+</p>
+
+
+<hr>
+<address><a href="http://www.stat.ucdavis.edu/~duncan">Duncan Temple Lang</a>
+<a href=mailto:duncan@wald.ucdavis.edu>&lt;duncan@wald.ucdavis.edu&gt;</a></address>
+<!-- hhmts start -->
+Last modified: Sat Nov 15 13:05:14 PST 2008
+<!-- hhmts end -->
+</body> </html>

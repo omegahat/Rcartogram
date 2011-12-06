@@ -1,0 +1,20 @@
+Package: Rcartogram
+Version: 0.2-2
+Title: Interface to Mark Newman's cartogram software
+Description:  This is an interface to C code
+  for "fitting" diffusion cartograms to a grid
+  of densities.  The resulting grid can be used to 
+  transform/interpolate values in the original coordinates.
+  The result of transforming boundaries for regions with different
+  densities is to make the regions in the new coordinates change
+  size to be proportional to the original densities. This is used
+  for drawing maps, for example, of election vote counts, 
+  disease incidences, etc. so that different populations/densities
+  are displayed rather than geographical area.
+Author: Duncan Temple Lang
+Depends: methods
+Maintainer: Duncan Temple Lang <duncan@wald.ucdavis.edu>
+SystemRequirements: libfftw3
+License: BSD
+See: http://www-personal.umich.edu/~mejn/cart/
+     http://www-personal.umich.edu/~mejn/cart/doc/description.html

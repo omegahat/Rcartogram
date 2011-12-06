@@ -1,0 +1,43 @@
+<changelog xmlns:r="http://www.r-project.org"
+	   xmlns:omg="http://www.omegahat.org"
+           xmlns:env="http://www.shell.org">
+<omg:pkg>Rcartogram</omg:pkg>
+<version num="0.2-2">
+<change>
+  Updates to the configuration script for the case where we are not using pkg-config but
+       looking for <filename>fftw3.h</filename> and libfftw3.so more directly.
+</change>
+</version>
+
+<version num="0.2-1">
+<change> Cleaned up the <filename>demo/synthetic.R</filename> to get the X and Y oriented correctly in the plots.
+</change>
+</version>
+
+<version num="0.2-0">
+<change>
+     Changed the default value for sea in <r:func>addBoundary</r:func> to 2, consistent with the 
+       Gastner and Newman paper.  This makes the computational effort greater but should
+       give better results.
+</change>
+</version>
+
+<version num="0.2-0">
+Nov 9, 2008
+<change>
+<r:expr>demo(synthetic)</r:expr> for artificial data with 5 regions.
+</change>
+<change>
+  Enhanced configuration script that looks in more places for fftw3 and fails
+      more aggressively when it can't find the files.  One can use --with-fftw3 to 
+      specify the fully-qualified name of a directory in which the fftw3 distribution
+      has been installed, e.g. <env>HOME</env>/local and where include/ and lib/ are located, or 
+      the name of the directory in which fftw3 was compiled and built.
+</change>
+<change>
+  Added a method for <r:func>transform</r:func> which is merely a call to <r:func>predict</r:func>.
+</change>
+</version>
+</changelog>
+
+

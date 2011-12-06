@@ -1,0 +1,9 @@
+useDynLib(Rcartogram)
+export(cartogram, addBoundary)
+
+exportMethods(addBoundary)
+
+S3method(predict, Cartogram)
+S3method(transform, Cartogram)
+
+
