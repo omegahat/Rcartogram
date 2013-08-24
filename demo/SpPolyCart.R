@@ -4,7 +4,7 @@ library(Rcartogram)
 library(sp)
 library(rgdal)
 library(rgeos)
-library(ggplot2)
+#library(ggplot2)
 
 #Get the map you want to use
 con <- url("http://gadm.org/data/rda/GBR_adm1.RData")
@@ -51,13 +51,13 @@ grid <- SpatialGridDataFrame(grid, data)
 dens.matrix <- as.matrix(grid["density"])
 cart <- cartogram(dens.matrix)
 
-#Interpolate all the other points of the original map into their new position using predict(grid,...)
+#Interpolate all the points of all the polygons of the original map into their new position using predict(grid,...)
 #Cannot put original polygon coordinates in here, since they are in projected grid.
 #?First project the points onto the grid, then interpolate to their new position using the cartogram,
 #?then re-project back to projection.
 
 #Attempt to use the projection transformation function to do the projection for me, unsuccessfully. 
-#CRS.sp <- do.call(rbind ,strsplit(unlist(strsplit(proj4string(sha), " ")), "="))
+#CRS.sp <- do.call(rbind ,strsplit(unlist(strsplit(proj4string(gadm), " ")), "="))
 # k <- as.numeric(CRS.sp[CRS.sp[,1]=="+k",2])
 # k <- k/max((big.bb[,"max"]-big.bb[,"min"])/N)
 # CRS.sp[CRS.sp[,1]=="+k",2] <- k
@@ -66,9 +66,10 @@ cart <- cartogram(dens.matrix)
 # myCRS <- CRS(paste(paste(CRS.sp[,1], CRS.sp[,2], sep="="), collapse=" "))
 # 
 # trans.sha <- spTransform(sha, myCRS)
-# sha@polygons[[1]]@Polygons[[1]]@coords[,1]
+# gadm@polygons[[1]]@Polygons[[1]]@coords[,1]
 
 
+# Attempt to acess every point in every polygon, interpolate it and regroup them in the correct order
 # interp.SpPdf <- function(SpPdf, cart) {
 #   require(Rcartogram)
 #   for(i in 1:length(SpPdf)) {
@@ -78,12 +79,4 @@ cart <- cartogram(dens.matrix)
 #       t.poly <- predict(cart, poly@coords[,1], poly@coords[,2])
 #     }
 #   }
-#   sapply(sha@polygons, function(x) {
-#     sapply()
-#   }
-#     
-#     coordinates(x))
-#   predict(cart, Polygons@coords[,1], Polygons@coords[,2])
-# }
-# sapply(sha@polygons, function(x) coordinates(x))
-# predict(cart, coords[,1], coords[,2])
+
