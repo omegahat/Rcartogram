@@ -1,3 +1,232 @@
-#FFT3_DIR=../../fftw3
-PKG_CPPFLAGS=-I$(FFTW3_DIR)
-PKG_LIBS=-L$(FFTW3_DIR) -lfftw3-3
+## Only used when installing from source on a Windows machine.
+##
+## Concept copied from the fftw R package, then amended, considerably, to add 
+## instructions for Windows users who are installing from source on Windows.
+##
+## =============================================================================
+## Rcartogram REQUIREMENT
+##
+## It is essential to have the libfftw(3) library available on the system in 
+## order to be able to compile Rcartogram from source.  R will need to find two 
+## files :
+##     a C header file called fftw3.h, and
+##     a compiled library file called something like libfftw3.dll
+## I say "something like" because it might be libfftw3-3.dll, or libfftw3.a, or 
+## even libfftw3-3.a (all of which are "legal" and will be recognised OK.)
+##
+## OBJECTIVE of this makefile
+##
+## The main objective of this Makevars.win file is to ascertain where the library
+## is, and pass that information to the later stages of the installation process
+## via two make variables called PKG_CPPFLAGS and PKG_LIBS.  
+##
+## In addition, if you are using a dynamic (as opposed to a static) linked 
+## library (ie its name ends in .dll rather than .a) the library has to be 
+## available whenever Rcartogram is loaded (eg via `library(Rcartogram)`).
+## Makevars.win will copy the libfftw dll to the appropriate sub-directory in 
+## your R library.
+##
+## By default when installing a package from source on Windows, R tries to install
+## both 32 bit and 64 bit versions of the package.  This makefile supports 
+## `multiarch` installs of Rcartogram on Windows.
+##
+## This makefile can be used to compile Rcartogram from source on Windows locally,
+## on your machine. It is also suitable for use with the Win-builder website service.
+##
+## INSTRUCTIONS for compiling Rcartogram from source on Windows
+##
+## See README.WindowsInstall for instructions about how to use this file.
+##
+## The remainder of the comments in this makefile explain what each step is meant
+## to do.  They are for information only.
+## =============================================================================
+##
+## LIB_FFTW is a make variable provided on Win-builder (and on CRAN windows builds).
+## It points to the directory where the Win-builder libfftw(3) library lives.
+## If Rcartogram is being compiled on Win-builder, this Makevars.win file will use
+## Win-builder's LIB_FFTW to find the libfftw(3) library. 
+##
+## If LIB_FFTW is blank (ie this install is not running on CRAN or Winbuilder,
+## but rather is running on your local machine), you will have to tell R where 
+## to find your local copies of the FFTW library files (both 32 and 
+## 64 bit versions).
+##
+## local_LIB_FFTW is the make variable this Makevars.win uses to point to the top
+## level directory where your copy of the libfftw3 library lives. There should be
+## two sub-directories below this top level directory, namely /i386 and /x64,
+## containing the 32 bit and 64 bit versions of the libfftw3 library.
+##
+## On my machine they were in sub-directories of C:/msys/fftwtest.
+## My 32 bit version is in C:/msys/fftwtest/i386, and my 64 bit version is in
+## C:/msys/fftwtest/x64
+##
+## You can provide the name of your libfftw3 library from within R by using a
+## (temporary) environment variable set via `Sys.setenv(local_LIB_FFTW="<your path>")`
+##
+## An earlier version of this makefile use a variable called FFTW3_DIR for the same
+## purpose. The line below is provided for backwards compatibility. (The variable
+## name was changed to align better with the name of the variable that the 
+## Win-builder website service uses to point to their libfftw3 library.)
+##
+## The "?=" below says only do this assignment if local_LIB_FFTW does not already
+## exist (and note that an environment variable of that same name counts as existing).
+## =============================================================================
+
+local_LIB_FFTW ?= $(FFTW3_DIR)
+
+## =============================================================================
+## R_ARCH is a make variable that R uses when it is installing sub-architectures.
+## On Windows, R_ARCH will be /i386 when installing the 32 bit version, and /x64
+## when installing the 64 bit version.
+##
+## This step ensures that local_LIB_FFTW refers to the appropriate R_ARCH 
+## sub-directory.
+##
+## If R_ARCH is not found in local_LIB_FFTW append it to LIB_FFTW, after
+## removing any trailing spaces (Use the := operator to prevent "make"" thinking  
+## a "recursively defined variable" is referencing itself - ie an error)
+## =============================================================================
+
+ifeq ($(findstring $(strip $(R_ARCH)), $(local_LIB_FFTW)), )
+local_LIB_FFTW :=$(local_LIB_FFTW)$(strip $(R_ARCH))
+endif
+
+## =============================================================================
+## If LIB_FFTW is not already defined, eg by Winbuilder or CRAN, 
+## (that's what ?= does), use the local value, as set above.
+## =============================================================================
+
+LIB_FFTW ?= $(local_LIB_FFTW)
+
+## =============================================================================
+## My own local build of FFTW from source put the header file (fftw3.h)
+## that the C preprocessor needs into a subsubdirectory of "LIB_FFTW" called /include.
+## Likewise the actual FFTW library (called something like libfftw3.<whatever>)
+## is in a subsubdirectory of "LIB_FFTW" called /lib
+##
+## On my system that equates to
+## C:/msys/fftwtest/x64/include, and C:/msys/fftwtest/x64/lib (for the 64 bit)
+## C:/msys/fftwtest/i386/include, and C:/msys/fftwtest/i386/lib (for the 32 bit)
+##
+## An alternative possibility is that there are no such subsubdirectories in 
+## your FFTW library, for example, if you have downloaded precompiled copies of 
+## the FFTW library, ie from
+## http://www.fftw.org/install/windows.html, or if you are planning on using the
+## Win-builder website.  
+##
+## In that case the header file, and the library itself are all in the same 
+## directory.
+##
+## The following step uses 2 make variables to point R towards the
+## sub-sub-directories, but only if they exist.
+##
+## $(wildcard <somepattern>) is a makefile function which returns a list of all 
+## files which match <somepattern>.
+## =============================================================================
+
+local_LIB_FFTW_includedir=/include
+local_LIB_FFTW_libdir=/lib
+
+ifeq ($(wildcard $(LIB_FFTW)$(local_LIB_FFTW_includedir)), )
+	# The include subdirectory was not found, so presume everything is in the same
+	# directory, and "blank" out these variables
+	local_LIB_FFTW_includedir=
+	local_LIB_FFTW_libdir=
+endif
+
+## =============================================================================
+## The compiled binary FFTW library (libraries really since there are 32 and 64 bit
+## versions) is probably called libfftw3.<something>, where <something> is either
+## "dll" or "a".  But sometimes they are called libfftw3-3.<something> (because)
+## FFTW is up to version 3-3). So we need to check and tell R and the C compiler
+## (via this makefile, and a C compiler flag) which library name to look for.  
+## By a convention we drop the "lib" and the .<something> from the value in 
+## the "-l" compiler flag.
+## =============================================================================
+
+## Check and see if a "libfftw3-3...." file exists"
+test_fftw3-3=$(wildcard $(LIB_FFTW)$(local_LIB_FFTW_libdir)/libfftw3-3*)
+
+ifeq ($(test_fftw3-3), )
+local_FFTW_libname=fftw3 # The default
+else
+# We *did* find a file  in the libdir beginning with libfftw3-3 
+# so we'll assume that fftw3-3 is what is needed instead of just fftw3
+local_FFTW_libname=fftw3-3
+endif
+
+## =============================================================================
+## Finally, fill in the make variables that the later parts of the R install
+## process actually want.
+## =============================================================================
+
+PKG_CPPFLAGS=-I"$(LIB_FFTW)$(local_LIB_FFTW_includedir)"
+PKG_LIBS=-L"$(LIB_FFTW)$(local_LIB_FFTW_libdir)" -l$(local_FFTW_libname)
+
+## =============================================================================
+## Finish by adding some dependencies so that the R install process: 
+##     a) copies the fftw3 dll, if FFTW DLLs are provided, and
+##     b) emits a message letting you know what it did.
+##
+## The dependencies are called .local_copy_FFTW_dll, and .local_LIB_FFTW_msg
+##
+## The indented code (recipes) in those  blocks is indented by tabs **NOT** spaces.
+## **NB** It is **CRUCIAL** that the lines remain indented by tabs, NOT spaces.
+## That is how makefiles distinguish recipes from targets and dependencies.
+## If your editor changes tabs to spaces, everything will go severely pear-shaped,
+## and you will get confusing error messages such as "missing separator".
+##
+## PS Don't worry if you see messages like '.local_copy_FFTW_dll': No such file
+## That is supposed to happen.
+## =============================================================================
+
+.PHONY: all .local_LIB_FFTW_msg .local_copy_FFTW_dll
+
+all: $(SHLIB)
+
+$(SHLIB):  .local_copy_FFTW_dll .local_LIB_FFTW_msg 
+
+## =============================================================================
+## If the fftw3 library is a dynamic link library (aka the filename ends in .dll)
+## R will need to find it every time Rcartogram is used.  To ensure that happens,
+## the following makefile rule checks whether the fftw3 library ends in dll, and
+## if it does, copies the fftw3 dll library to the first place R will look for it, 
+## namely the R library (sub-)directory where the rest of the Rcartogram package
+## will be installed.
+## =============================================================================
+
+test_dll =$(LIB_FFTW)$(local_LIB_FFTW_libdir)/lib$(local_FFTW_libname).dll
+
+.local_copy_FFTW_dll:
+ifneq ($(wildcard  $(test_dll)), )
+	## OK, using a dll fftw library so copy it as needed.
+ifeq ($(wildcard $(R_PACKAGE_DIR)/libs$(R_ARCH)), )
+	mkdir -p -v "$(R_PACKAGE_DIR)/libs$(R_ARCH)"
+endif
+	cp "$(LIB_FFTW)$(local_LIB_FFTW_libdir)/lib$(local_FFTW_libname).dll" "$(R_PACKAGE_DIR)/libs$(R_ARCH)"
+endif
+
+## =============================================================================
+## This makefile rule just echoes some messages about what was found and done.
+## =============================================================================
+
+.local_LIB_FFTW_msg:
+	@echo ------------------------------------------------------------------------
+	@echo Information message from src/Makevars.win, no user action required
+	@echo
+	@echo Looking for the \(lib\)fftw\(3\) libraries.
+	@echo FFTW_DIR \(now deprecated\) was set as ...$(FFTW_DIR)...
+	@echo local_LIB_FFTW was set as ...$(local_LIB_FFTW)...
+	@echo LIB_FFTW was set as ...$(LIB_FFTW)...
+	@echo local_LIB_FFTW_includedir was detected as ...$(local_LIB_FFTW_includedir)...
+	@echo local_LIB_FFTW_libdir was detected as ...$(local_LIB_FFTW_libdir)...
+	@echo local_FFTW_libname was set to ...$(local_FFTW_libname)...
+	@echo R_ARCH is ...$(R_ARCH)...
+	@echo Based on all that :
+	@echo PKG_CPPFLAGS was set to $(PKG_CPPFLAGS)
+	@echo and PKG_LIBS was set to $(PKG_LIBS)
+	@echo R_PACKAGE_DIR is $(R_PACKAGE_DIR)
+	@echo Finished looking for the \(lib\)fftw\(3\) libraries. Good luck with the next step.
+	@echo ------------------------------------------------------------------------
+
+

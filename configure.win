@@ -1,13 +1,23 @@
-
-if test -z "${FFTW3_DIR}" ; then
- echo "You need to set the environment variable FFTW3_DIR to point to the directory containing fftw3.h and libfftw3-3.dll"
- exit 1
+if test -z "${FFTW3_DIR}" -a -z "${LIB_FFTW}" -a -z "${local_LIB_FFTW}" ; then
+ echo ----------------------------------------------------------------------------
+ echo Message from configure.win
+ echo
+ echo To install Rcartogram from source you must have the FFTW libraries installed.
+ echo You also need to tell R where to find the libraries. One way to do this is
+ echo to set the environment variable local_LIB_FFTW to point to the directory
+ echo containing the FFTW libraries.
+ echo
+ echo Download and install the 32 bit FFTW library in "somepath"/i386, and 
+ echo the 64 bit FFTW library into "somepath"/x64.  Then in an R console
+ echo set the working directory to be Rcartogram and enter:
+ echo
+ echo 'Sys.setenv(local_LIB_FFTW=shortPathName("somepath"))'
+ echo 'install.packages(".", repos = NULL, type = "source", INSTALL_opts = "--preclean")'
+ echo 'Sys.unsetenv("local_LIB_FFTW")'
+ echo
+ echo See README.Windowsinstall for details.
+ echo See the README.Windowsinstall.tutorial in the vignettes sub-directory for 
+ echo a full explanation and information about other options.
+ echo ----------------------------------------------------------------------------
 fi
-
-if ! test -r "$R_PACKAGE_DIR/libs" ;  then
-  mkdir "$R_PACKAGE_DIR/libs"
-fi
-
-cp "$FFTW3_DIR/libfftw3-3.dll" "$R_PACKAGE_DIR/libs"
-
 
