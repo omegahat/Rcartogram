@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="author" content="Geoff Lee" />
+
+
+<title>README.WindowsInstall Tutorial</title>
+
+
+
+
+<link href="data:text/css,body%20%7B%0A%20%20background%2Dcolor%3A%20%23fff%3B%0A%20%20margin%3A%201em%20auto%3B%0A%20%20max%2Dwidth%3A%20700px%3B%0A%20%20overflow%3A%20visible%3B%0A%20%20padding%2Dleft%3A%202em%3B%0A%20%20padding%2Dright%3A%202em%3B%0A%20%20font%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0A%20%20font%2Dsize%3A%2014px%3B%0A%20%20line%2Dheight%3A%201%2E35%3B%0A%7D%0A%0A%23header%20%7B%0A%20%20text%2Dalign%3A%20center%3B%0A%7D%0A%0A%23TOC%20%7B%0A%20%20clear%3A%20both%3B%0A%20%20margin%3A%200%200%2010px%2010px%3B%0A%20%20padding%3A%204px%3B%0A%20%20width%3A%20400px%3B%0A%20%20border%3A%201px%20solid%20%23CCCCCC%3B%0A%20%20border%2Dradius%3A%205px%3B%0A%0A%20%20background%2Dcolor%3A%20%23f6f6f6%3B%0A%20%20font%2Dsize%3A%2013px%3B%0A%20%20line%2Dheight%3A%201%2E3%3B%0A%7D%0A%20%20%23TOC%20%2Etoctitle%20%7B%0A%20%20%20%20font%2Dweight%3A%20bold%3B%0A%20%20%20%20font%2Dsize%3A%2015px%3B%0A%20%20%20%20margin%2Dleft%3A%205px%3B%0A%20%20%7D%0A%0A%20%20%23TOC%20ul%20%7B%0A%20%20%20%20padding%2Dleft%3A%2040px%3B%0A%20%20%20%20margin%2Dleft%3A%20%2D1%2E5em%3B%0A%20%20%20%20margin%2Dtop%3A%205px%3B%0A%20%20%20%20margin%2Dbottom%3A%205px%3B%0A%20%20%7D%0A%20%20%23TOC%20ul%20ul%20%7B%0A%20%20%20%20margin%2Dleft%3A%20%2D2em%3B%0A%20%20%7D%0A%20%20%23TOC%20li%20%7B%0A%20%20%20%20line%2Dheight%3A%2016px%3B%0A%20%20%7D%0A%0Atable%20%7B%0A%20%20margin%3A%201em%20auto%3B%0A%20%20border%2Dwidth%3A%201px%3B%0A%20%20border%2Dcolor%3A%20%23DDDDDD%3B%0A%20%20border%2Dstyle%3A%20outset%3B%0A%20%20border%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0A%20%20border%2Dwidth%3A%202px%3B%0A%20%20padding%3A%205px%3B%0A%20%20border%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0A%20%20border%2Dwidth%3A%201px%3B%0A%20%20border%2Dstyle%3A%20inset%3B%0A%20%20line%2Dheight%3A%2018px%3B%0A%20%20padding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0A%20%20border%2Dleft%2Dstyle%3A%20none%3B%0A%20%20border%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0A%20%20background%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0A%0Ap%20%7B%0A%20%20margin%3A%200%2E5em%200%3B%0A%7D%0A%0Ablockquote%20%7B%0A%20%20background%2Dcolor%3A%20%23f6f6f6%3B%0A%20%20padding%3A%200%2E25em%200%2E75em%3B%0A%7D%0A%0Ahr%20%7B%0A%20%20border%2Dstyle%3A%20solid%3B%0A%20%20border%3A%20none%3B%0A%20%20border%2Dtop%3A%201px%20solid%20%23777%3B%0A%20%20margin%3A%2028px%200%3B%0A%7D%0A%0Adl%20%7B%0A%20%20margin%2Dleft%3A%200%3B%0A%7D%0A%20%20dl%20dd%20%7B%0A%20%20%20%20margin%2Dbottom%3A%2013px%3B%0A%20%20%20%20margin%2Dleft%3A%2013px%3B%0A%20%20%7D%0A%20%20dl%20dt%20%7B%0A%20%20%20%20font%2Dweight%3A%20bold%3B%0A%20%20%7D%0A%0Aul%20%7B%0A%20%20margin%2Dtop%3A%200%3B%0A%7D%0A%20%20ul%20li%20%7B%0A%20%20%20%20list%2Dstyle%3A%20circle%20outside%3B%0A%20%20%7D%0A%20%20ul%20ul%20%7B%0A%20%20%20%20margin%2Dbottom%3A%200%3B%0A%20%20%7D%0A%0Apre%2C%20code%20%7B%0A%20%20background%2Dcolor%3A%20%23f7f7f7%3B%0A%20%20border%2Dradius%3A%203px%3B%0A%20%20color%3A%20%23333%3B%0A%7D%0Apre%20%7B%0A%20%20white%2Dspace%3A%20pre%2Dwrap%3B%20%20%20%20%2F%2A%20Wrap%20long%20lines%20%2A%2F%0A%20%20border%2Dradius%3A%203px%3B%0A%20%20margin%3A%205px%200px%2010px%200px%3B%0A%20%20padding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0A%20%20background%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0A%0Acode%20%7B%0A%20%20font%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0A%20%20font%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0A%20%20padding%3A%202px%200px%3B%0A%7D%0A%0Adiv%2Efigure%20%7B%0A%20%20text%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0A%20%20background%2Dcolor%3A%20%23FFFFFF%3B%0A%20%20padding%3A%202px%3B%0A%20%20border%3A%201px%20solid%20%23DDDDDD%3B%0A%20%20border%2Dradius%3A%203px%3B%0A%20%20border%3A%201px%20solid%20%23CCCCCC%3B%0A%20%20margin%3A%200%205px%3B%0A%7D%0A%0Ah1%20%7B%0A%20%20margin%2Dtop%3A%200%3B%0A%20%20font%2Dsize%3A%2035px%3B%0A%20%20line%2Dheight%3A%2040px%3B%0A%7D%0A%0Ah2%20%7B%0A%20%20border%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0A%20%20padding%2Dtop%3A%2010px%3B%0A%20%20padding%2Dbottom%3A%202px%3B%0A%20%20font%2Dsize%3A%20145%25%3B%0A%7D%0A%0Ah3%20%7B%0A%20%20border%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0A%20%20padding%2Dtop%3A%2010px%3B%0A%20%20font%2Dsize%3A%20120%25%3B%0A%7D%0A%0Ah4%20%7B%0A%20%20border%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0A%20%20margin%2Dleft%3A%208px%3B%0A%20%20font%2Dsize%3A%20105%25%3B%0A%7D%0A%0Ah5%2C%20h6%20%7B%0A%20%20border%2Dbottom%3A%201px%20solid%20%23ccc%3B%0A%20%20font%2Dsize%3A%20105%25%3B%0A%7D%0A%0Aa%20%7B%0A%20%20color%3A%20%230033dd%3B%0A%20%20text%2Ddecoration%3A%20none%3B%0A%7D%0A%20%20a%3Ahover%20%7B%0A%20%20%20%20color%3A%20%236666ff%3B%20%7D%0A%20%20a%3Avisited%20%7B%0A%20%20%20%20color%3A%20%23800080%3B%20%7D%0A%20%20a%3Avisited%3Ahover%20%7B%0A%20%20%20%20color%3A%20%23BB00BB%3B%20%7D%0A%20%20a%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0A%20%20%20%20text%2Ddecoration%3A%20underline%3B%20%7D%0A%20%20a%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0A%20%20%20%20text%2Ddecoration%3A%20underline%3B%20%7D%0A%0A%2F%2A%20Class%20described%20in%20https%3A%2F%2Fbenjeffrey%2Ecom%2Fposts%2Fpandoc%2Dsyntax%2Dhighlighting%2Dcss%0A%20%20%20Colours%20from%20https%3A%2F%2Fgist%2Egithub%2Ecom%2Frobsimmons%2F1172277%20%2A%2F%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%2F%2A%20Keyword%20%2A%2F%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%2F%2A%20DataType%20%2A%2F%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%2F%2A%20DecVal%20%28decimal%20values%29%20%2A%2F%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%2F%2A%20BaseN%20%2A%2F%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%2F%2A%20Float%20%2A%2F%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%2F%2A%20Char%20%2A%2F%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%2F%2A%20String%20%2A%2F%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%2F%2A%20Comment%20%2A%2F%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%2F%2A%20OtherToken%20%2A%2F%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%2F%2A%20AlertToken%20%2A%2F%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%2F%2A%20Function%20calls%20%2A%2F%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%2F%2A%20ErrorTok%20%2A%2F%0A%0A" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+<div id="header">
+<h1 class="title">README.WindowsInstall Tutorial</h1>
+<h4 class="author"><em>Geoff Lee</em></h4>
+<h4 class="date"><em>Sun 23 Aug 2015</em></h4>
+</div>
+
+<div id="TOC">
+<ul>
+<li><a href="#introduction-installing-rcartogram-from-source-on-windows">Introduction : Installing Rcartogram from source on Windows</a><ul>
+<li><a href="#intended-audience">Intended audience</a></li>
+<li><a href="#aside-formatting-in-this-document">Aside : Formatting in this document</a></li>
+<li><a href="#what-does-install-from-source-mean">What does “install from source” mean?</a></li>
+<li><a href="#overview-of-the-problem">Overview of the problem</a></li>
+<li><a href="#basic-instructions---3-steps-to-install-rcartogram-from-source">Basic instructions - 3 steps to install Rcartogram from source</a></li>
+<li><a href="#explanations">Explanations</a></li>
+</ul></li>
+<li><a href="#step-1-installing-rtools">Step 1 : Installing Rtools</a><ul>
+<li><a href="#instructions">Instructions</a></li>
+<li><a href="#explanation---why-do-you-need-rtools">Explanation - Why do you need Rtools?</a></li>
+</ul></li>
+<li><a href="#step-2-install-the-fftw-library">Step 2: Install the FFTW library</a><ul>
+<li><a href="#instructions-1">Instructions</a></li>
+<li><a href="#explanation---what-is-a-dll-and-why-are-32-and-64-bit-versions-necessary">Explanation - What is a DLL, and why are 32 <em>and</em> 64 bit versions necessary?</a></li>
+</ul></li>
+<li><a href="#step-3-install-rcartogram">Step 3 Install Rcartogram</a><ul>
+<li><a href="#instructions-2">Instructions</a></li>
+<li><a href="#explanations-install.packages-local_lib_fftw-makefiles-and-srcmakevars.win">Explanations — install.packages; local_LIB_FFTW; makefiles and src/Makevars.win</a><ul>
+<li><a href="#install.packages-and-r-cmd-install">install.packages, and R CMD INSTALL</a></li>
+<li><a href="#local_lib_fftw">local_LIB_FFTW</a></li>
+<li><a href="#makefiles">Makefiles</a></li>
+<li><a href="#srcmakevars.win">src/Makevars.win</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#alternative-approaches-supported-by-makevars.win">Alternative approaches supported by Makevars.win</a><ul>
+<li><a href="#alternative-use-the-win-builder-website-service">Alternative : Use the Win-Builder website service</a></li>
+<li><a href="#an-alternative-step-2-compile-fftw-itself-from-source">An alternative Step 2 : Compile FFTW itself from source</a><ul>
+<li><a href="#download-and-decompress-the-fftw-source-code">1. Download and decompress the FFTW source code</a></li>
+<li><a href="#download-and-install-msys">2. Download and install MSys</a></li>
+<li><a href="#point-msys-at-the-rtools-c-compiler">3. Point MSys at the Rtools C Compiler</a></li>
+<li><a href="#compile-fftw-libraries-from-source">4. Compile FFTW libraries from source</a></li>
+<li><a href="#continue-to-step-3-as-before-to-install-rcartogram">5. Continue to Step 3 (as before), to install Rcartogram</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="introduction-installing-rcartogram-from-source-on-windows" class="section level1">
+<h1>Introduction : Installing Rcartogram from source on Windows</h1>
+<hr />
+<div id="intended-audience" class="section level2">
+<h2>Intended audience</h2>
+<p>This document explains how to install the Rcartogram package from source, on Windows. It is aimed at novice level. It includes:</p>
+<ul>
+<li>instructions about <em>what</em> to do, and</li>
+<li>explanations about <em>how</em> those instructions work, so should something go awry, you have a chance of understanding what is wrong, and recovering from the mistake.</li>
+</ul>
+<p>It is the explanations that make this document long — you can complete the instructions about what to do in less time than it takes to read this document. If all you want to do is install Rcartogram, there are three basic steps — just jump to the section marked “instructions” in each step, and follow the prescription written there. It is not essential to understand (or even read) the explanations.</p>
+<p>If you you <em>are</em> curious about how this all works, and do decide to read the explanations as well, it is probably best read in order from the beginning since it has been written in “tutorial style”.</p>
+</div>
+<div id="aside-formatting-in-this-document" class="section level2">
+<h2>Aside : Formatting in this document</h2>
+<p>This document has been written to use “markdown” formatting. If you are reading this as a text file, just ignore the extra backticks, hashes, and asterisks sprinkled through the document - they are formatting instructions. Or if you want to see a “prettier” version, you can use the rmarkdown package (available from CRAN) to render it into a number of other formats. For example, after installing rmarkdown you could open an R console and enter (<strong>without</strong> the backticks - they are part of the formatting ! but <strong>with</strong> the quotes, “, they are part of the R code):</p>
+<pre><code>rmarkdown::render(&quot;path to this file&quot;, output_format = &quot;html_vignette&quot;)</code></pre>
+<p>to convert it to a nicely formatted html document that can be read in a web browser.</p>
+</div>
+<div id="what-does-install-from-source-mean" class="section level2">
+<h2>What does “install from source” mean?</h2>
+<p>On <em>Windows</em>, when a package is installed, eg via <code>install.packages( ... )</code> or a drop down menu in the GUI, the default is to install pre-prepared <em>binary</em> versions of the package. As a consequence, many Windows based users of R (eg this author, until recently) are unfamiliar with the other possible ways of installing R packages. This contrasts with Unix (or *nix) users of R, for whom the default is to install from <em>source</em>.</p>
+<p>“Install from source” means that you begin with the source code, and must compile any C code that is involved into binary (ie internal machine code) form yourself, before you can install the package in your R library.</p>
+</div>
+<div id="overview-of-the-problem" class="section level2">
+<h2>Overview of the problem</h2>
+<p>If a package is written in <em>pure</em> R, there is little practical difference between installing from source, and installing from a pre-prepared package bundle — since there is no C code involved anyway.</p>
+<p>However, Rcartogram is essentially a wrapper of R code around a C program, <code>cart</code>, that was written by Mark Newman. At the time of writing, binary versions of Rcartogram suitable for Windows based systems are not available. Hence to install Rcartogram on Windows, you have to install from source. Installing an R package which involves C code from <em>source</em> is a little more involved, since tools are needed to compile the C code, and link it to the R code.</p>
+<p>For *nix users, all the necessary tools for installing from source are usually already available on their system, so there is little extra preparation required. Windows users however have to install the tools needed to install R packages from source onto their system before they can proceed.</p>
+<p>In addition the <code>cart</code> program uses an open-source library of subroutines to perform Fourier transforms. The library is called <em>FFTW</em> (Fastest Fourier Transform in the West). Hence for Rcartogram, there is the added complication that you also have to install the FFTW library, and let R know where to find it.</p>
+</div>
+<div id="basic-instructions---3-steps-to-install-rcartogram-from-source" class="section level2">
+<h2>Basic instructions - 3 steps to install Rcartogram from source</h2>
+<p>There are three basic steps to install Rcartogram from source on a Windows system:</p>
+<ul>
+<li>Step 1. Download and install Rtools. Rtools is available from <a href="https://cran.r-project.org/doc/manuals/r-release/R-admin.html#The-Windows-toolset">Rtools and the Windows toolset</a>. I find these <a href="https://github.com/stan-dev/rstan/wiki/Install-Rtools-for-Windows">user friendly Rtools instructions</a> a little easier to follow.</li>
+<li>Step 2. Download and install the FFTW library. Precompiled FFTW libraries for Windows are available from <a href="http://www.fftw.org/install/windows.html">FFTW Windows downloads page</a>. You will need <strong>both</strong> 32 bit and 64 bit versions of the library. Unzip the 32 bit version onto “somepath”/i386, and the 64 bit version into “somepath”/x64</li>
+<li><p>Step 3. Download the latest source code bundle for Rcartogram from the <a href="https://github.com/omegahat/Rcartogram">Omegahat Rcartogram gitHub site</a>, unzip it, start an R console, set the Rcartogram directory as the working directory and enter:</p>
+<pre><code>Sys.setenv(local_LIB_FFTW=shortPathName(&quot;somepath&quot;))  
+install.packages(&quot;.&quot;, repos = NULL, type = &quot;source&quot;, INSTALL_opts = &quot;--preclean)  
+Sys.unsetenv(&quot;local_LIB_FFTW&quot;)  </code></pre>
+where “somepath” is the directory you chose for the FFTW libraries in Step2.</li>
+<li><p><em>Optional Step 4</em>. Once Rcartogram is installed in your R library you can safely tidy up, if you wish, by deleting the downloaded FFTW libraries (“somepath”/i383, “somepath”/x64), and the source code version of Rcartogram which you downloaded.</p></li>
+</ul>
+</div>
+<div id="explanations" class="section level2">
+<h2>Explanations</h2>
+<p>The remainder of this document explains each of these steps in detail.</p>
+<p>Some alternative approaches are described at the end of the document.</p>
+</div>
+</div>
+<div id="step-1-installing-rtools" class="section level1">
+<h1>Step 1 : Installing Rtools</h1>
+<hr />
+<div id="instructions" class="section level2">
+<h2>Instructions</h2>
+<p>The official instructions, and a link to the Rtools themselves are here <a href="https://cran.r-project.org/doc/manuals/r-release/R-admin.html#The-Windows-toolset" class="uri">https://cran.r-project.org/doc/manuals/r-release/R-admin.html#The-Windows-toolset</a>.</p>
+<p>The official instructions tell you how to install lots of other stuff as well, that you need if you want to build R itself from source on Windows, or produce package documentation using LaTeX, but you don’t need all that stuff to get Rcartogram working.</p>
+<p>There are user friendly explanations of how to install Rtools into a Windows system elsewhere on the web — see for example <a href="https://github.com/stan-dev/rstan/wiki/Install-Rtools-for-Windows" class="uri">https://github.com/stan-dev/rstan/wiki/Install-Rtools-for-Windows</a></p>
+</div>
+<div id="explanation---why-do-you-need-rtools" class="section level2">
+<h2>Explanation - Why do you need Rtools?</h2>
+<p>Rcartogram is a package which includes C code, as well as pure R code. In fact it is mostly C code. Installing from source for a package which includes C code requires a C compiler. In fact it is best (almost essential) that it is the same C compiler that was used to build R itself.</p>
+<p>That is what Rtools mostly is — an “installable on Windows” version of the C compiler used to build R.</p>
+<p>Running the C compiler under Windows needs a few extra shell commands (aka small programs) as well and that is what the rest of Rtools is. Most of the (open source) C community seem to work in a Unix (or variant thereof) world and those extra commands (and indeed the C compiler itself) are part of the â<U+0080><U+009C>standardâ<U+0080> system in Unix.</p>
+<p>Itâ<U+0080><U+0099>s only those of us who work in Windows who need to install Rtools, which is a port of the necessary tools from Unix to Windows.</p>
+</div>
+</div>
+<div id="step-2-install-the-fftw-library" class="section level1">
+<h1>Step 2: Install the FFTW library</h1>
+<hr />
+<p>There are two options for obtaining the FFTW library. The simplest, using pre-compiled FFTW DLLs available for download from the FFTW website, is described here. An alternative is outlined at the end of this document.</p>
+<div id="instructions-1" class="section level2">
+<h2>Instructions</h2>
+<p>The main FFTW website is <a href="http://www.fftw.org/">FFTW — C code for Fast Fourier Transforms</a>. It contains a link to their <a href="http://www.fftw.org/download.html">FFTW downloads page</a>, which in turn contains a link to their <a href="http://www.fftw.org/install/windows.html">FFTW Windows downloads page</a></p>
+<p>Download both the 32 bit <strong>and</strong> 64 bit versions of the zipped DLL files.</p>
+<p>Unzip the 32 bit version into a directory called “somepath”/i386, and unzip the 64 bit version into a directory called “somepath”/x64.</p>
+<p>“somepath” can be any directory you choose.</p>
+<p>Later on, in step 3 you will tell R what “somepath” is, so it can find the FFTW libraries.</p>
+</div>
+<div id="explanation---what-is-a-dll-and-why-are-32-and-64-bit-versions-necessary" class="section level2">
+<h2>Explanation - What is a DLL, and why are 32 <em>and</em> 64 bit versions necessary?</h2>
+<p>DLLs are “dynamic linked libraries”. A DLL is a pre-compiled (or binary) version of the FFTW code that other programs (such as <code>cart</code> and <code>Rcartogram</code>) can link to when they are compiled, and again when they are running.</p>
+<p>The zip files contain the actual precompiled library (called <code>libfftw3-3.dll</code>). They also contain a C code header file (called <code>fftw3.h</code>) which programs like <code>Rcartogram</code> need at compile time so they know what the functions provided in the DLL “look like” (in more technical jargon, what their “signatures” are).</p>
+<p>By default (at least on my 64 bit system) R tries to install both 32 bit and 64 bit versions of every package. For pure R code packages there is no difference, so R only installs one version. But for packages like <code>Rcartogram</code> which involve C code, it will look for or create both 32 bit and 64 bit versions of the compiled C code , and install those in separate sub-directories of the R package in your R library.</p>
+<p>When R is installing <code>Rcartogram</code>, it looks for the 32 bit version of the FFTW DLL in the <code>/i386</code> sub-directory of “somepath”, and the 64 bit version of the FFTW DLL in the <code>/x64</code> sub-directory of “somepath” . <code>/i386</code> and <code>/x64</code> are standard names that the R install process knows about and uses automatically on Windows.</p>
+<p>Because these FFTW DLL libraries are “dynamically linked” R will need to find them at run time, whenever you use the <code>Rcartogram</code> package. The <code>Rcartogram</code> install process takes care of this for you, by copying them to the appropriate place in your R library. If at any stage you see anything similar to the following (extremely confusing) error message:</p>
+<pre><code>Error in inDL(x, as.logical(local), as.logical(now), ...) : 
+unable to load shared object '...../Rcartogram/libs/i386/Rcartogram.dll':
+LoadLibrary failure:  The specified module could not be found.</code></pre>
+<p>the problem is <em>NOT</em> that R cannot find Rcartogram.dll, but rather that while loading Rcartogram, Windows could not find a “specified module” that R asked for, with the specified module being the FFTW library! The FFTW library must also be for the right architecture (32 or 64 bit). The example above could not find a 32 bit FFTW library (which can be deduced because it is trying to load the <code>/i386</code> version of Rcartogram). It means that something went awry with this copy step (or a preceding FFTW compile step).</p>
+</div>
+</div>
+<div id="step-3-install-rcartogram" class="section level1">
+<h1>Step 3 Install Rcartogram</h1>
+<hr />
+<div id="instructions-2" class="section level2">
+<h2>Instructions</h2>
+<p>To install Rcartogram:</p>
+<ul>
+<li>Download the source bundle for Rcartogram. The <a href="https://github.com/omegahat/Rcartogram">Omegahat Rcartogram gitHub site</a> has the most up to date version.</li>
+<li>Decompress (ie unzip and/or untar) it. Depending upon what version of Windows you are using, and how you download it, you may need a utility program to unzip and untar this file. I use 7zip, available for free from the <a href="http://www.7-zip.org/download.html">7zip download page</a>.</li>
+<li><p>Start R, navigate to the Rcartogram folder, set it as your working directory, and in the R console enter:</p>
+<pre><code>Sys.setenv(local_LIB_FFTW=shortPathName(&quot;somepath&quot;))  
+install.packages(&quot;.&quot;, repos = NULL, type = &quot;source&quot;, INSTALL_opts = &quot;--preclean&quot;)  
+Sys.unsetenv(&quot;local_LIB_FFTW&quot;)  </code></pre>
+where “somepath” is the directory you chose for the FFTW libraries in Step2. In my case, I had <code>Sys.setenv(local_LIB_FFTW=shortPathName(&quot;C:/msys/fftwtest&quot;))</code></li>
+<li><p>or, instead of starting R etc, you could open a <code>cmd</code> window, navigate to the Rcartogram folder, and enter (all on one line):</p>
+<pre><code>set local_LIB_PATH=somepath&amp;&amp; R CMD INSTALL --preclean &quot;.&quot;</code></pre>
+<p>NB the (lack of) spacing and quoting on this line <em>is</em> important, which is why I find it easier to install Rcartogram from within R using <code>install.packages(...)</code></p></li>
+</ul>
+<p>(If you are reading this document in text mode, ignore the “backticks”, they are part of the markdown formatting of this document).</p>
+</div>
+<div id="explanations-install.packages-local_lib_fftw-makefiles-and-srcmakevars.win" class="section level2">
+<h2>Explanations — install.packages; local_LIB_FFTW; makefiles and src/Makevars.win</h2>
+<div id="install.packages-and-r-cmd-install" class="section level3">
+<h3>install.packages, and R CMD INSTALL</h3>
+<p><code>install.packages</code> is the R function which the GUI uses to install packages. Using it explicitly in the console is the simplest way of using non-default arguments:</p>
+<ul>
+<li><code>&quot;.&quot;, repos = NULL</code> says install the package whose source code is in the current working directory; and do not try and download anything from CRAN or any of the other possible R package repositories.</li>
+<li><code>type = &quot;source&quot;</code> says install from source (ie it is not a binary package).</li>
+<li><p><code>INSTALL_opts = &quot;--preclean&quot;</code> passes the preclean flag to a later step in the install process:</p>
+<ul>
+<li><code>--preclean</code> says remove any intermediate files from any previous installation steps before beginning.</li>
+</ul></li>
+</ul>
+<p>Internally, <code>install.packages</code> (effectively) runs the system command <code>R CMD INSTALL</code>, hence the equivalence of the the second <code>cmd</code> line option above.</p>
+</div>
+<div id="local_lib_fftw" class="section level3">
+<h3>local_LIB_FFTW</h3>
+<p>The lines of code involving <code>local_LIB_FFTW</code> are how you tell R where to find the FFTW libraries it needs. The line beginning <code>Sys.setenv(local_LIB_FFTW=...)</code> creates a temporary environment variable (called <code>local_LIB_FFTW</code>), which later parts of the R install process use to find the FFTW libraries.</p>
+<p>The <code>shortPathName</code> function (available only on Windows) converts “somepath” into a old-fashioned shorter version of “somepath” that Windows still recognises as the same directory, but which does not have blank spaces anywhere in the (shortened) pathname. Windows allows pathnames containing spaces but some older Unix commands did not deal well with blanks in pathnames, so I play safe and use the <code>shortPathName</code> function to avoid any possibility of those sort of errors.</p>
+<p>The environment variable disappears at the end of your R session (but it is tidy practice to remove it explicitly when the install step has finished using <code>Sys.unsetenv(&quot;local_LIB_FFTW&quot;)</code>)</p>
+</div>
+<div id="makefiles" class="section level3">
+<h3>Makefiles</h3>
+<p>As a package user, you do not need to know anything at all about this — it is all done for you — only package developers need to know this. But if you are curious, or in case something goes wrong and you need to figure out how to fix the problem, read on.</p>
+<p>The explanation of how R uses <code>local_LIB_FFTW</code> to complete the installation process is quite straightforward — but only <strong>once</strong> you know enough about how:</p>
+<ul>
+<li>the Unix based world uses <code>configure</code>, <code>make</code> and makefiles to improve the portability of programs written on lots of different systems,</li>
+<li>R uses a tailored version of that approach when it installs R packages, and</li>
+<li>R makes some special exceptions for installing packages from source on Windows based systems.</li>
+</ul>
+<p>The conventional way of installing programs from source in the Unix world involves a shell script (sort of like a Windows .bat file) called configure, and a program called <code>make</code> which reads instructions from a makefile. “Makefiles” are text files with a special format. Essentially they contain “rules”. Each rule tells the <code>make</code> program how to create and install a file. The file to be created is called a “target”. The next part of the rule is a list of “dependencies” (typically other files that must exist before the target can be created) and finally there are a list of 1 or more “recipes”, which are system (shell) commands that will be run to create the target once the dependencies exist. The make program analyses the makefile to discover the order in which various files must be created, then executes the necessary rules and their recipes in the right order. Typically recipes say things like (not in this syntax though!):</p>
+<ul>
+<li>“run the C pre-processor” (on this file), or</li>
+<li>“run the C compiler” (on this file and create an intermediate object file), or</li>
+<li>“link the following object files into an binary executable”, or</li>
+<li>“copy the executable file into this directory”</li>
+</ul>
+<p>To increase flexibility and readability, the <code>make</code> program also recognises and uses “make variables” in a makefile.</p>
+<p>This is of course a <em>gross</em> simplification, but the concept is correct. If you want to know a <em>little</em> more, see for example <a href="http://kbroman.org/minimal_make/">Minimal Make</a> and <a href="https://robots.thoughtbot.com/the-magic-behind-configure-make-make-install">The Magic behind configure, make, make install</a>.</p>
+<p>In fact the conventions surrounding configure and make, and the specifications for the syntax of a makefile, are so strong they are almost a standard, and there are literally books written about them. There are even programs (autotools) that will generate standard (very flexible, and hence very complex) “configure” and “makefile”s for you!</p>
+</div>
+<div id="srcmakevars.win" class="section level3">
+<h3>src/Makevars.win</h3>
+<p>Rtools includes a Windows version of a <code>make</code> program (ported from Unix), and the <code>R CMD INSTALL</code> command uses that <code>make</code> to install packages. Many makefiles are actually just called “Makefile”, but the <code>make</code> program accepts any name for a makefile, and indeed, will read in and combine several makefiles in one run, if so instructed.</p>
+<p>The <code>R CMD INSTALL</code> process uses a standard makefile called “Makeconf” (well “R_HOME/etcR_ARCH/Makeconf” to be precise), which does most of the work of compiling and installing <em>any</em> R package.</p>
+<p>But before reading Makeconf, <code>R CMD INSTALL</code> reads a package specific makefile called “Makevars” (well “src/Makevars” to be precise). The idea of the “Makevars” file is that package <strong>developers</strong> can use it to set some make variables (called <code>PKG_CPPFLAGS</code> and <code>PKG_LIBS</code>) that “Makeconf” expects, to whatever values their particular package needs. The variables, respectively, contain instructions (flags) for the C pre-processor and link stages of the installation process.</p>
+<p>Because Windows is “special” and often needs something different to most Unix systems , if <code>R CMD INSTALL</code> (or <code>install.packages</code>) detects that it is running on a Windows system, priority will be given to a “src/Makevars.win” if it is found, and the usual (Unix) Makevars file will be ignored.</p>
+<p>Rcartogram does have a “Makevars.win” file (you can find it in the src subdirectory), whose main purpose is to find the FFTW library, and put some required information into the <code>PKG_CPPFLAGS</code> and <code>PKG_LIBS</code> variables. One way that you, a package <strong>user</strong>, can tell “Makevars.win” where you put the FFTW libraries on your system is via a make variable that is defined and used in Rcartogram’s “Makevars.win”, called <code>local_LIB_FFTW</code>. There are numerous ways of setting a make variable, but one is by creating a system environment variable, of the same name, before invoking the <code>make</code> program. And that is what <code>Sys.setenv(local_LIB_FFTW=...)</code> does.</p>
+</div>
+</div>
+</div>
+<div id="alternative-approaches-supported-by-makevars.win" class="section level1">
+<h1>Alternative approaches supported by Makevars.win</h1>
+<hr />
+<p>The “src/Makevars.win” does support other ways of informing R where to find the FFTW libraries. It is extensively (almost overly) documented, if you care to read it.</p>
+<div id="alternative-use-the-win-builder-website-service" class="section level2">
+<h2>Alternative : Use the Win-Builder website service</h2>
+<p>There is another quite different approach, which uses the <a href="http://win-builder.r-project.org/">Win-Builder website service</a>, rather than compiling <code>Rcartogram</code> locally on your machine. The Win-Builder website:</p>
+<ul>
+<li>has the necessary C compiler,</li>
+<li>has (static versions of) the FFTW libraries already installed, and</li>
+<li>provides a make variable (called <code>LIB_FFTW</code>) which points to the location of the FFTW libraries.</li>
+</ul>
+<p>“Makevars.win” has been written to recognise and use <code>LIB_FFTW</code> if it is present (in preference to <code>local_LIB_FFTW</code>), so Rcartogram can be compiled simply by uploading the bundled source code of Rcartogram (with one <strong>crucial</strong> change) to the Win-Builder website site.</p>
+<p>This delegates all the work of steps 1 through 3 (ie compiling, linking, and preparing Windows binary versions of <code>Rcartogram</code>) to the service provided by the Winbuilder website. In a way, this is probably the simplest way of compiling a binary version of Rcartogram that can be installed on a Windows system.</p>
+<p>However the Win-Builder website service is intended more for infrequent use as a testing service by package developers who do <em>not</em> have access to a Windows system, rather than for regular use by package users who <em>do</em> have Windows, so it should be used only as a last resort, if the 3 step approach already described fails for some reason.</p>
+<p>There is one <strong>essential</strong> change you <strong>MUST</strong> make to Rcartogram, before you upload to the Win-Builder website.</p>
+<p>In the Rcartogram directory, there is a “DESCRIPTION” file. This is a text file, one line of which reads</p>
+<pre><code>Maintainer: Duncan Temple Lang &lt;duncan@wald.ucdavis.edu&gt;</code></pre>
+<p>You <strong>MUST</strong> edit this line to your own name and email address, and resave the “DESCRIPTION” file before using the Win-Builder website, since Win-Builder sends all the follow-up emails to that address. If it holds the wrong address, it will cause lots of annoyance for everyone!</p>
+<p>After you have edited and resaved the DESCRIPTION file, you can either:</p>
+<ol style="list-style-type: decimal">
+<li>rebundle the Rcartogram source code yourself manually (eg by using the <code>cmd</code> line <code>R CMD build</code> tool - type <code>R CMD build --help</code> for instructions), then upload the compressed file to the Win-Builder website using its web interface, or</li>
+<li><p>if you have the devtools package (available from CRAN) installed, you can start R, navigate to the Rcartogram folder, set that as your working directory, and enter into the console the line</p>
+<pre><code>devtools::build_win(&quot;.&quot;, args = &quot;--no-build-vignettes&quot;)</code></pre></li>
+</ol>
+<p>The <code>--no-build-vignettes</code> flag is necessary in <code>devtools::build_win</code> (and in <code>R CMD build &quot;.&quot;  --no-build-vignettes</code>), since otherwise R attempts to (temporarily) install Rcartogram <em>locally</em> so it can build the vignettes <em>before</em> uploading to the Win-builder website, which of course fails!</p>
+<p>In about 30-60 minutes, all being well, you will receive an email with a link to a temporary (it will be deleted in about 72 hours) directory on the the Win-Builder website where you will find a compiled binary version of Rcartogram, in a zip file.</p>
+<p>Download that zip file, start R, and then, from the R console, enter</p>
+<pre><code>install.packages(&quot;path to the zip file&quot;, repos = NULL)</code></pre>
+<p><code>type = source</code> is not necessary (in fact would be wrong), because this zip file contains the “usual” binary format files that <code>install.packages</code> expects on Windows.</p>
+</div>
+<div id="an-alternative-step-2-compile-fftw-itself-from-source" class="section level2">
+<h2>An alternative Step 2 : Compile FFTW itself from source</h2>
+<hr />
+<p>Step 2, as described earlier, obtained the FFTW libraries in precompiled binary format from the FFTW website. This alternative downloads the FFTW source code, and compiles the FFTW libraries locally.</p>
+<p>It enables you to specify that you want static (rather than dynamically loaded) versions of the FFTW libraries. The principal reason you might be interested in static FFTW libraries is to avoid any possibility of the <code>LoadLibrary failure:  The specified module could not be found.</code> error message which arises if Windows cannot find the FFTW DLL’s when Rcartogram “asks” for them..</p>
+<p>Compiling Rcartogram and linking to static FFTW libraries reduces slightly the complications later on, when you are actually using Rcartogram, but the gain is not great (since the Rcartogram install process and “Makevars.win” automatically takes care of the main complication involved in using dynamically linked versions of the FFTW libraries).</p>
+<p>In general I would not recommend this approach to a novice package installer. It involves more work (hence more possibility for something to go wrong).</p>
+<p>The process is only outlined below - it assumes some knowledge about using command lines shells under Windows.</p>
+<div id="download-and-decompress-the-fftw-source-code" class="section level3">
+<h3>1. Download and decompress the FFTW source code</h3>
+<p>The main FFTW website <a href="http://www.fftw.org/">FFTW — C code for Fast Fourier Transforms</a> contains a link to their <a href="http://www.fftw.org/download.html">FFTW downloads page</a>, which in turn contains a link which enables you to download a compressed version of the <a href="http://www.fftw.org/fftw-3.3.4.tar.gz">FFTW source code</a>.</p>
+<p>Download that source code and decompress it. Depending upon what version of Windows you are using, you may need a utility program to unzip and untar this file. I use 7zip, available for free from <a href="http://www.7-zip.org/download.html">7zip download page</a>.</p>
+<p>The FFTW website includes instructions about <a href="http://www.fftw.org/install/windows.html">Compiling FFTW on Windows</a>. You need to install some more tools ported from Unix to Windows onto your computer, so that you can run the :</p>
+<pre><code>./configure
+make
+make install</code></pre>
+<p><em>magic</em> incantation that is the standard approach to compiling code in the Unix universe.</p>
+<p>What follows is a modified version of the approach described on the FFTW website (modified because Rtools already provides the C compiler you will need).</p>
+</div>
+<div id="download-and-install-msys" class="section level3">
+<h3>2. Download and install MSys</h3>
+<p>Next install MSys on your computer. This website <a href="http://www.rioki.org/2013/10/16/mingw-w64.html">MinGW-w64 and MSys</a> contains a clear explanation of installing MinGW-w64 and MSys. You only need to download and install MSys. I put my downloaded and unzipped (untarred) version in “c:/msys”.</p>
+<p>Once done, you can invoke the <code>msys</code> shell at any time by typing <code>c:\msys\msys.bat</code> in a <code>cmd.exe</code> console. This opens a new <code>msys</code> console titled “MINGW32”.</p>
+<p>MSys is another “shell”, ported to Windows from the Unix world. It is tantalizingly similar to the usual Windows <code>cmd</code> shell, but with some commands and aspects of the syntax different enough to be confusing (if you are unfamiliar with them, as I was). The good news is you don’t really need to learn much about MSys to use it to install FFTW from source.</p>
+</div>
+<div id="point-msys-at-the-rtools-c-compiler" class="section level3">
+<h3>3. Point MSys at the Rtools C Compiler</h3>
+<p>Rather than downloading and installing MinGW-w64 (a C compiler), you can simply use the C compiler that comes with Rtools. You just have to tell the MSys shell where to find it. Do this by altering a line in the “c:/msys/etc/fstab” file, so it reads as follows:</p>
+<pre><code>    C:\Rtools\gcc-4.6.3    /mingw</code></pre>
+<p>Substitute :</p>
+<ul>
+<li>wherever you installed MSys for “C:/msys” to find the correct “etc/fstab” file, and</li>
+<li>wherever Rtools is on your system for “C:/Rtools/gcc-4.6.3” in the line in the fstab file.</li>
+</ul>
+<p>This tells the <code>msys</code> shell that when it is looking for directory <code>/mingw</code>, go to what Windows knows as the <code>C:\Rtools\gcc-4.6.3</code> directory. <code>/mingw</code> is where later steps will look for gcc, the GNU C compiler.</p>
+</div>
+<div id="compile-fftw-libraries-from-source" class="section level3">
+<h3>4. Compile FFTW libraries from source</h3>
+<p>Open the Msys shell, navigate to where the FFTW source is (use the <code>cd</code> command, which works under <code>msys</code> shell pretty similarly to the same command under the <code>cmd</code> shell), and enter the following lines.</p>
+<pre><code># exit if any error
+set -e
+
+#Use the standard architecture specific subdirectories, ie i386 for 32 bit, and x64 for 64 bit, in the prefixes.
+
+#64 bit version
+
+./configure CC=&quot;/mingw/bin/gcc -m64&quot; --prefix=/fftwtest/x64 --host=x86_64-w64-mingw32 --disable-alloca --with-our-malloc --with-windows-f77-mangling --disable-shared --enable-static --enable-threads --with-combined-threads --enable-sse2 --with-incoming-stack-boundary=2 &amp;&amp; make -j4 &amp;&amp; make install
+
+#32 bit version
+
+./configure CC=&quot;/mingw/bin/gcc -m32&quot; --prefix=/fftwtest/i386 --host=i386-w64-mingw32 --disable-alloca --with-our-malloc --with-windows-f77-mangling --disable-shared --enable-static --enable-threads --with-combined-threads --enable-sse2 --with-incoming-stack-boundary=2 &amp;&amp; make -j4 &amp;&amp; make install
+</code></pre>
+<p>To avoid typing errors, you could create a file in the FFTW directory (I called mine “geoffsfftw.txt”), cut and paste these lines into the file, and then execute it from the <code>msys</code> shell by entering <code>./geoffsfftw.txt</code> <strong>NB</strong> The sections beginning <code>./configure</code> through to <code>make install</code> all belong on a <strong>single</strong> line. In the text above they are wrapped, purely for readability purposes.</p>
+<p>This will compile both 32 and 64 bit versions of FFTW, as static libraries. It takes a while, and emits a lot of messages - there is easily time to take a break and have a cup of coffee or tea while the process is running.</p>
+<p>Most of the flags and instructions are copied verbatim from the the FFTW website instructions. The main differences are:</p>
+<ul>
+<li>the <code>-m64</code> in <code>CC=&quot;/mingw/bin/gcc -m64&quot;</code> tells the C compiler to compile 64 bit versions of the libraries; likewise <code>-m32</code> is for the 32 bit version. This is the feature that took me longest to discover.</li>
+<li><code>--prefix=/fftwtest/x64</code> and <code>--prefix=/fftwtest/i386</code> tell the make and make install processes where to place the FFTW libraries. These paths are relative to where msys is installed (so on my set up, an example of an absolute location was <code>c:/msys/fftwtest/x64</code>)</li>
+<li>the <code>--disable-shared --enable-static</code> flags say to compile and install static (rather than dynamic linked) versions of the FFTW libraries.</li>
+</ul>
+</div>
+<div id="continue-to-step-3-as-before-to-install-rcartogram" class="section level3">
+<h3>5. Continue to Step 3 (as before), to install Rcartogram</h3>
+<p>Rcartogram will compile and install quite happily using these static FFTW libraries as input to Step 3, described earlier. Just set the environment variable <code>local_LIB_FFTW</code> to point to the first part (excluding the architecture specific sub-directory) of the prefix - in my example I set <code>local_LIB_FFTW</code> to be <code>c:/msys/fftwtest</code>. The “src/Makevars.win” file even recognises and automatically takes care of the fact that under the GNU standard layout for files, there may be separate sub-directories below the architecture specific prefix level (“/include” for include files, “/lib” for library files, and so forth).</p>
+</div>
+</div>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

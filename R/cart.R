@@ -38,7 +38,7 @@ if(TRUE)  {
    x = as.numeric(x) - 1 
    y = as.numeric(y) - 1
 
-   tmp = .Call("R_makecartogram", popEls, x, y, dim, as.numeric(blur))
+   tmp = .Call("R_makecartogram", popEls, x, y, dim, as.numeric(blur), PACKAGE = "Rcartogram")
      # convert the results into matrices.
    ans = lapply(tmp, function(x) matrix(x, nrow(pop) + zero, ncol(pop) + zero, byrow = TRUE))
    ans = structure(ans,
@@ -89,10 +89,13 @@ function(object, x, y = NULL, ...)
   }
      
   
-  tmp = rep(as.numeric(NA), length(x))
-  ans = list(x = tmp, y = tmp)
-
-  .Call("R_predict", object, as.numeric(x),  as.numeric(y), ans, dim(object$x))
+  # Avoid problems with the same vector (tmp) being sent to C twice due to R's
+  # copy-on-modify rules
+  tmp_x = rep(as.numeric(NA), length(x))
+  tmp_y = rep(as.numeric(NA), length(y))
+  ans = list(x = tmp_x, y = tmp_y)
+  
+  .Call("R_predict", object, as.numeric(x),  as.numeric(y), ans, dim(object$x), PACKAGE = "Rcartogram")
   ans
 }
 

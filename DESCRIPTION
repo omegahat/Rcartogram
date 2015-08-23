@@ -1,7 +1,7 @@
 Package: Rcartogram
-Version: 0.2-2
+Version: 0.2-3
 Title: Interface to Mark Newman's cartogram software
-Description:  This is an interface to C code
+Description: Rcartogram is an interface to C code
   for "fitting" diffusion cartograms to a grid
   of densities.  The resulting grid can be used to 
   transform/interpolate values in the original coordinates.
@@ -13,8 +13,15 @@ Description:  This is an interface to C code
   are displayed rather than geographical area.
 Author: Duncan Temple Lang
 Depends: methods
-Maintainer: Duncan Temple Lang <duncan@wald.ucdavis.edu>
+Maintainer: Duncan Temple Lang <duncan@wald.ucdavis.edu> 
 SystemRequirements: libfftw3
+Biarch: TRUE
 License: BSD
 See: http://www-personal.umich.edu/~mejn/cart/
      http://www-personal.umich.edu/~mejn/cart/doc/description.html
+     http://www.omegahat.org/Rcartogram/
+Packaged: Wed Dec 10 10:06:43 2008; duncan
+Imports: maps, methods
+LazyData: true
+Suggests: knitr
+VignetteBuilder: knitr
