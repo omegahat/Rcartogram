@@ -1,0 +1,37 @@
+This is an overview of how to install Rcartogram, from source, on a Windows system.  
+
+See the vignette "README.WindowsInstall.Tutorial.Rmd" or "README.WindowsInstall.Tutorial.html" (in the vignettes sub-directory) for a more extensive set of instructions, an explanation of what the instructions are doing, and some alternative ways of getting Rcartogram installed successfully on a Windows system.
+
+INSTRUCTIONS
+
+There are three basic steps to install Rcartogram from source on a Windows system:
+
+Step 1.
+
+Download and install Rtools.  Rtools is available from [Rtools and the Windows toolset](https://cran.r-project.org/doc/manuals/r-release/R-admin.html#The-Windows-toolset).  
+
+I find these [user friendly Rtools instructions](https://github.com/stan-dev/rstan/wiki/Install-Rtools-for-Windows) a little easier to follow.
+
+
+Step 2. 
+
+Download and install the FFTW library.  Precompiled FFTW libraries for Windows are available from [FFTW Windows downloads page](http://www.fftw.org/install/windows.html).  You will need **both** 32 bit and 64 bit versions of the library. 
+
+Unzip the 32 bit version onto "somepath"/i386, and the 64 bit version into "somepath"/x64
+
+You can choose any directory you like for "somepath".
+
+Step 3.
+
+Download the latest source code bundle for Rcartogram from the [Omegahat Rcartogram gitHub site](https://github.com/omegahat/Rcartogram), unzip it, start an R console, set the Rcartogram directory as the working directory and enter:
+      
+Sys.setenv(local_LIB_FFTW=shortPathName("somepath"))  
+install.packages(".", repos = NULL, type = "source", INSTALL_opts = "--preclean)  
+Sys.unsetenv("local_LIB_FFTW")  
+    
+where "somepath" is the directory you chose for the FFTW libraries in Step2.
+
+
+Optional Step 4
+
+Once Rcartogram is installed in your R library you can safely tidy up, if you wish, by deleting the downloaded FFTW libraries ("somepath"/i383, "somepath"/x64), and the source code version of Rcartogram which you downloaded. 
