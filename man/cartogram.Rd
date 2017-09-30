@@ -54,11 +54,13 @@ cartogram(pop, zero = TRUE, blur = 0, sea = NA)
  \code{\link{addBoundary}}
 }
 \examples{
-  filename = system.file("data", "uspop.dat", package = "Rcartogram")
+  filename = system.file("data", "uspop.tab", package = "Rcartogram")
   pop = read.table(filename)
   grid = cartogram(pop)
 
   predict(grid, 3.1, 4.5)
+
+  predict(grid, c(3.1, 2), c(4.5, 4))
  
   # note that this is equivalent to using the interp application in
   # the cart(ogram) distribution with inputs as 2.1 3.4
@@ -66,9 +68,9 @@ cartogram(pop, zero = TRUE, blur = 0, sea = NA)
   #        
 
     # now predict lots of values.
-  o = system.time(predict(grid, 
-                          runif(10000, 1, 1024), 
-                          runif(10000, 1, 512)))
+  ans <- predict(grid, 
+                 runif(10000, 1, 1024), 
+                 runif(10000, 1, 512))
 
 }
 \keyword{hplot}
