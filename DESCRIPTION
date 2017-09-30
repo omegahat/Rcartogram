@@ -1,5 +1,5 @@
 Package: Rcartogram
-Version: 0.2-2
+Version: 0.2-3
 Title: Interface to Mark Newman's cartogram software
 Description:  This is an interface to C code
   for "fitting" diffusion cartograms to a grid
@@ -12,7 +12,8 @@ Description:  This is an interface to C code
   disease incidences, etc. so that different populations/densities
   are displayed rather than geographical area.
 Author: Duncan Temple Lang
-Depends: methods
+Imports: methods, stats, graphics
+Suggests: maps
 Maintainer: Duncan Temple Lang <duncan@wald.ucdavis.edu>
 SystemRequirements: libfftw3
 License: BSD

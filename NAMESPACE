@@ -1,4 +1,8 @@
 useDynLib(Rcartogram)
+import(methods)
+importFrom("graphics", "image")
+importFrom("stats", "predict")
+
 export(cartogram, addBoundary)
 
 exportMethods(addBoundary)
