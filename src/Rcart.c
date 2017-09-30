@@ -87,7 +87,7 @@ R_makecartogram(SEXP r_pop, SEXP gridx, SEXP gridy, SEXP r_dims, SEXP blur)
 #include <stdio.h>
 
 SEXP
-R_predict(SEXP obj, SEXP r_x, SEXP r_y, SEXP r_ans, SEXP r_dims)
+R_predict(SEXP obj, SEXP r_x, SEXP r_y, SEXP r_dims)
 {
     int n, i;
     double *x_ans_ptr, *y_ans_ptr;
@@ -96,10 +96,15 @@ R_predict(SEXP obj, SEXP r_x, SEXP r_y, SEXP r_ans, SEXP r_dims)
     double dx, dy;
     int *dims;
     double *gridx, *gridy;
+    SEXP tmp, r_ans;
 
-    n = Rf_length(r_x);
-    x_ans_ptr = REAL(VECTOR_ELT(r_ans, 0));
-    y_ans_ptr = REAL(VECTOR_ELT(r_ans, 1));
+    n = Rf_length(r_x);    
+    PROTECT(r_ans = NEW_LIST(2));
+    SET_VECTOR_ELT(r_ans, 0, tmp = NEW_NUMERIC(n));
+    x_ans_ptr = REAL(tmp);
+    SET_VECTOR_ELT(r_ans, 1, tmp = NEW_NUMERIC(n));
+    y_ans_ptr = REAL(tmp);
+    
     dims = INTEGER(r_dims);
 
     gridx = REAL(VECTOR_ELT(obj, 0));
@@ -123,6 +128,7 @@ R_predict(SEXP obj, SEXP r_x, SEXP r_y, SEXP r_ans, SEXP r_dims)
 	y_ans_ptr[i] = (1. - dx)*(1. - dy)*IJ(gridy, ix, iy) + dx*(1. - dy)*IJ(gridy, ix+1, iy)
              + (1. - dx)*dy*IJ(gridy, ix, iy+1) + dx*dy*IJ(gridy, ix+1, iy+1);
     }
-
-    return(R_NilValue);
+    
+    UNPROTECT(1);
+    return(r_ans);
 }

@@ -87,12 +87,9 @@ function(object, x, y = NULL, ...)
     length(x) = len
     length(y) = len    
   }
-     
-  
-  tmp = rep(as.numeric(NA), length(x))
-  ans = list(x = tmp, y = tmp)
 
-  .Call("R_predict", object, as.numeric(x),  as.numeric(y), ans, dim(object$x))
+  ans = .Call("R_predict", object, as.numeric(x),  as.numeric(y), dim(object$x))
+  names(ans) = c("x", "y")
   ans
 }
 
