@@ -54,7 +54,7 @@ cartogram(pop, zero = TRUE, blur = 0, sea = NA)
  \code{\link{addBoundary}}
 }
 \examples{
-  filename = system.file("data", "uspop.tab", package = "Rcartogram")
+  filename = system.file("data", "uspop.tab.gz", package = "Rcartogram")
   pop = read.table(filename)
   grid = cartogram(pop)
 

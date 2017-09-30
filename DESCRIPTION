@@ -16,6 +16,6 @@ Imports: methods, stats, graphics
 Suggests: maps
 Maintainer: Duncan Temple Lang <duncan@wald.ucdavis.edu>
 SystemRequirements: libfftw3
-License: BSD
+License: BSD_3_clause + file LICENSE
 See: http://www-personal.umich.edu/~mejn/cart/
      http://www-personal.umich.edu/~mejn/cart/doc/description.html
