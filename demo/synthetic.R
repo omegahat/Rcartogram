@@ -115,7 +115,7 @@ text(c(N/4, N/4, 3*N/4, 3*N/4, N2) + added[1],
 }
 
     # For a 1500 x 1500 grid, on a Macbook pro (4Gb RAM, 2.6 Ghz),
-    # about 140 seconds. On a Linux box with 32Gb RAM, 4 dual core 2.4Ghz chipd
+    # about 140 seconds. On a Linux box with 32Gb RAM, 4 dual core 2.4Ghz chip
     # 210 seconds!
  cart = cartogram(big)
 
